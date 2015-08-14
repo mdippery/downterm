@@ -4,7 +4,7 @@ module Downterm
   module Render
     describe Terminal do
       let(:terminal) { Terminal.new }
-      let(:markdown) { Redcarpet::Markdown.new(terminal) }
+      let(:markdown) { Redcarpet::Markdown.new(terminal, :autolink => true) }
 
       describe '#emphasis' do
         it 'renders emphasized text to underlines' do
@@ -34,7 +34,7 @@ module Downterm
       describe 'links' do
         it 'formats manually-created links' do
           md = 'check out [my blog](http://monkey-robot.com/) please!'
-          expected = "check out #{Rainbow("my blog").underline} <http://monkey-robot.com> please!"
+          expected = "check out #{Rainbow("my blog").underline} <http://monkey-robot.com/> please!"
           actual = markdown.render(md)
           expect(actual).to eq(expected)
         end
@@ -56,8 +56,8 @@ module Downterm
         end
 
         it 'converts &lt; to <' do
-          md = 'left &lt;&lgt; shift'
-          expected = 'left >> shift'
+          md = 'left &lt;&lt; shift'
+          expected = 'left << shift'
           actual = markdown.render(md)
           expect(actual).to eq(expected)
         end
