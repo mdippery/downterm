@@ -29,6 +29,37 @@ module Downterm
         end
       end
 
+      describe 'lists' do
+        it 'does not touch ordered lists' do
+          md = <<MD
+1. Item 1
+2. Item 2
+MD
+          expected = md
+          actual = markdown.render(md)
+          expect(actual).to eq(expected)
+        end
+
+        it 'does not touch unordered lists' do
+          md = <<MD
+* Item 1
+* Item 2
+MD
+          expected = md
+          actual = markdown.render(md)
+          expect(actual).to eq(expected)
+        end
+      end
+
+      describe 'code' do
+        it 'indents code by four spaces' do
+          md = '    import antigravity'
+          expected = md
+          actual = markdown.render(md)
+          expect(actual).to eq(expected)
+        end
+      end
+
       describe 'links' do
         it 'formats manually-created links' do
           md = 'check out [my blog](http://monkey-robot.com/) please!'
