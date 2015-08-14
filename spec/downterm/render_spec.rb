@@ -6,7 +6,7 @@ module Downterm
       let(:terminal) { Terminal.new }
       let(:markdown) { Redcarpet::Markdown.new(terminal, :autolink => true) }
 
-      describe '#emphasis' do
+      describe 'emphasis' do
         it 'renders emphasized text to underlines' do
           md = 'the word *italicized* is italicized'
           expected = "the word #{Rainbow("italicized").underline} is italicized"
@@ -20,9 +20,7 @@ module Downterm
           actual = markdown.render(md)
           expect(actual).to eq(expected)
         end
-      end
 
-      describe '#double_emphasis' do
         it 'renders double-emphasized text to boldface' do
           md = 'the word **emphasized** is bolded'
           expected = "the word #{Rainbow("emphasized").bright} is bolded"
