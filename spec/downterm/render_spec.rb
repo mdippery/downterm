@@ -60,6 +60,15 @@ MD
         end
       end
 
+      describe 'an image' do
+        it 'is printed as a link to the image file' do
+          md = '![Michael](http://monkey-robot.com/static/images/michael.png)'
+          expected = "#{Rainbow('http://monkey-robot.com/static/images/michael.png').underline}"
+          actual = markdown.render(md)
+          expect(actual).to eq(expected)
+        end
+      end
+
       describe 'a link' do
         it 'is formatted when it has a title' do
           md = 'check out [my blog](http://monkey-robot.com/) please!'
