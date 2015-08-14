@@ -6,22 +6,22 @@ module Downterm
       let(:terminal) { Terminal.new }
       let(:markdown) { Redcarpet::Markdown.new(terminal, :autolink => true) }
 
-      describe 'emphasis' do
-        it 'renders emphasized text to underlines' do
+      describe 'emphasized text' do
+        it 'is underlined' do
           md = 'the word *italicized* is italicized'
           expected = "the word #{Rainbow("italicized").underline} is italicized"
           actual = markdown.render(md)
           expect(actual).to eq(expected)
         end
 
-        it 'renders emphasized text marked by underscores to underlines' do
+        it 'is underlined when delineated by underscores' do
           md = 'the word _italicized_ is italicized'
           expected = "the word #{Rainbow("italicized").underline} is italicized"
           actual = markdown.render(md)
           expect(actual).to eq(expected)
         end
 
-        it 'renders double-emphasized text to boldface' do
+        it 'is bolded when it is doubly emphasized' do
           md = 'the word **emphasized** is bolded'
           expected = "the word #{Rainbow("emphasized").bright} is bolded"
           actual = markdown.render(md)
@@ -29,8 +29,8 @@ module Downterm
         end
       end
 
-      describe 'lists' do
-        it 'does not touch ordered lists' do
+      describe 'a list' do
+        it 'is rendered verbatim when ordered' do
           md = <<MD
 1. Item 1
 2. Item 2
@@ -40,7 +40,7 @@ MD
           expect(actual).to eq(expected)
         end
 
-        it 'does not touch unordered lists' do
+        it 'is rendered verbatim when unordered' do
           md = <<MD
 * Item 1
 * Item 2
@@ -52,7 +52,7 @@ MD
       end
 
       describe 'code' do
-        it 'indents code by four spaces' do
+        it 'is indented by four spaces' do
           md = '    import antigravity'
           expected = md
           actual = markdown.render(md)
@@ -60,15 +60,15 @@ MD
         end
       end
 
-      describe 'links' do
-        it 'formats manually-created links' do
+      describe 'a link' do
+        it 'is formatted when it has a title' do
           md = 'check out [my blog](http://monkey-robot.com/) please!'
           expected = "check out #{Rainbow("my blog").underline} <http://monkey-robot.com/> please!"
           actual = markdown.render(md)
           expect(actual).to eq(expected)
         end
 
-        it 'highlights autolinks' do
+        it 'is formatted when it is created automatically' do
           md = 'check out http://monkey-robot.com/'
           expected = "check out #{Rainbow("http://monkey-robot.com/").underline}"
           actual = markdown.render(md)
@@ -76,22 +76,22 @@ MD
         end
       end
 
-      describe 'entities' do
-        it 'converts &gt; to >' do
+      describe 'an entity' do
+        it 'is converted from &gt; to >' do
           md = '-&gt; look at this!'
           expected = '-> look at this!'
           actual = markdown.render(md)
           expect(actual).to eq(expected)
         end
 
-        it 'converts &lt; to <' do
+        it 'is converted from &lt; to <' do
           md = 'left &lt;&lt; shift'
           expected = 'left << shift'
           actual = markdown.render(md)
           expect(actual).to eq(expected)
         end
 
-        it 'converts &amp; to &' do
+        it 'is converted from &amp; to &' do
           md = 'i like cake &amp; ice cream'
           expected = 'i like cake & ice cream'
           actual = markdown.render(md)
