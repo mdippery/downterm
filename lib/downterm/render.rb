@@ -40,6 +40,14 @@ module Downterm
       def image(link, title, content)
         Rainbow(link).underline.to_s
       end
+
+      def block_code(code, language)
+        code.split("\n").map { |line| "    #{line}\n"}.join("")
+      end
+
+      def codespan(code)
+        "`#{code}`"
+      end
     end
   end
 end
