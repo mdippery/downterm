@@ -18,6 +18,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
 
+  gem.add_runtime_dependency('highline', '~> 1.7')
   gem.add_runtime_dependency('rainbow', '~> 2.0')
   gem.add_runtime_dependency('redcarpet', '~> 3.3')
 

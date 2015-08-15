@@ -70,6 +70,15 @@ CODE
         end
       end
 
+      describe 'a horizontal rule' do
+        it 'is rendered as a series of dashes across the terminal' do
+          md = '---'
+          expected = '-' * HighLine::SystemExtensions.terminal_size[0] + "\n"
+          actual = markdown.render(md)
+          expect(actual).to eq(expected)
+        end
+      end
+
       describe 'an image' do
         it 'is printed as a link to the image file' do
           md = '![Michael](http://monkey-robot.com/static/images/michael.png)'
