@@ -79,6 +79,29 @@ CODE
         end
       end
 
+      describe 'a quote' do
+        it 'is rendered verbatim' do
+          md = <<QUOTE
+> One, two! One, two! And through and through
+> The vorpal blade went snicker-snack!
+> He left it dead, and with its head
+> He went galumphing back
+QUOTE
+          expected = md
+          actual = markdown.render(md)
+          expect(actual).to eq(expected)
+        end
+      end
+
+      describe 'strikethrough text' do
+        it 'is rendered dimmer than surrounding text' do
+          md = 'today is ~~beautiful~~ grey'
+          expected = "today is #{Rainbow('beautiful').hide} grey"
+          actual = markdown.render(md)
+          expect(actual).to eq(expected)
+        end
+      end
+
       describe 'an image' do
         it 'is printed as a link to the image file' do
           md = '![Michael](http://monkey-robot.com/static/images/michael.png)'
