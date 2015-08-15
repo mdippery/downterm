@@ -36,6 +36,10 @@ module Downterm
       def autolink(link, link_type)
         Rainbow(link).underline.to_s
       end
+
+      def image(link, title, content)
+        Rainbow(link).underline.to_s
+      end
     end
   end
 end
