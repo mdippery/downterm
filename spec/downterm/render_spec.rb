@@ -59,7 +59,7 @@ MD
           expect(actual).to eq(expected)
         end
 
-        it 'is left unchanged when inline' do
+        it 'is rendered verbatim when inline' do
           md = <<CODE
     import antigravity
     puts "I'm using Python!"
