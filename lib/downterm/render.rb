@@ -70,7 +70,8 @@ module Downterm
       private
 
       def number_list(items)
-        (1..items.count).zip(items).map { |e| "#{e[0]}. #{e[1]}" }
+        width = items.count.to_s.length
+        (1..items.count).zip(items).map { |e| sprintf("%*d. %s", width, e[0], e[1]) }
       end
     end
   end
