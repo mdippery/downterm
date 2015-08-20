@@ -1,3 +1,4 @@
+require 'highline'
 require 'rainbow'
 require 'redcarpet'
 
@@ -65,6 +66,10 @@ module Downterm
         when :unordered then return "* #{text}"
         when :ordered   then return "#{text}"
         end
+      end
+
+      def hrule
+        '-' * HighLine::SystemExtensions.terminal_size[0] + "\n"
       end
 
       private
