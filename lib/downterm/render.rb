@@ -79,7 +79,11 @@ module Downterm
       end
 
       def superscript(text)
-        text
+        if text.length > 1
+          "^(#{text})"
+        else
+          "^#{text}"
+        end
       end
 
       def list(contents, list_type)

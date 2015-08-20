@@ -5,7 +5,8 @@ module Downterm
     describe Terminal do
       let(:terminal) { Terminal.new }
       let(:markdown) { Redcarpet::Markdown.new(terminal, :autolink => true,
-                                                         :strikethrough => true) }
+                                                         :strikethrough => true,
+                                                         :superscript => true) }
 
       describe 'emphasized text' do
         it 'is underlined' do
