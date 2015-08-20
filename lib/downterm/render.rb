@@ -48,6 +48,10 @@ module Downterm
       def codespan(code)
         "`#{code}`"
       end
+
+      def strikethrough(text)
+        Rainbow(text).hide.to_s
+      end
     end
   end
 end
