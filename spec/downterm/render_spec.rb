@@ -37,6 +37,22 @@ module Downterm
         end
       end
 
+      describe 'superscript text' do
+        it 'is rendered verbatim' do
+          md = 'e = mc^2'
+          expected = md
+          actual = markdown.render(md)
+          expect(actual).to eq(expected)
+        end
+
+        it 'is rendered verbatim even when consisting of multiple characters' do
+          md = 'this gem is really cool^(not)'
+          expected = md
+          actual = markdown.render(md)
+          expect(actual).to eq(expected)
+        end
+      end
+
       describe 'a list' do
         it 'is rendered verbatim when ordered' do
           md = <<MD

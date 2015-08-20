@@ -78,6 +78,10 @@ module Downterm
         Rainbow(text).hide.to_s
       end
 
+      def superscript(text)
+        text
+      end
+
       def list(contents, list_type)
         case list_type
         when :unordered then return contents
