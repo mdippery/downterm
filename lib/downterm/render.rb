@@ -18,7 +18,7 @@ module Downterm
       end
 
       def header(text, header_level)
-        "#{'#' * header_level} #{text}\n"
+        "#{'#' * header_level} #{text}"
       end
 
       def entity(text)
@@ -59,11 +59,11 @@ module Downterm
       end
 
       def block_code(code, language)
-        code.split("\n").map { |line| "    #{line}\n"}.join("")
+        code.split("\n").map { |line| "    #{line}"}.join("\n")
       end
 
       def block_quote(quote)
-        quote.split("\n").map { |line| "> #{line}" }.join("\n") + "\n"
+        quote.split("\n").map { |line| "> #{line}" }.join("\n")
       end
 
       def block_html(raw_html)
@@ -89,7 +89,7 @@ module Downterm
       def list(contents, list_type)
         case list_type
         when :unordered then return contents
-        when :ordered   then return number_list(contents.split("\n")).join("\n") + "\n"
+        when :ordered   then return number_list(contents.split("\n")).join("\n")
         end
       end
 
@@ -101,7 +101,7 @@ module Downterm
       end
 
       def hrule
-        '-' * HighLine::SystemExtensions.terminal_size[0] + "\n"
+        '-' * HighLine::SystemExtensions.terminal_size[0]
       end
 
       private
