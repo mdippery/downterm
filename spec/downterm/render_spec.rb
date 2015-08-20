@@ -28,6 +28,13 @@ module Downterm
           actual = markdown.render(md)
           expect(actual).to eq(expected)
         end
+
+        it 'is bolded and underlined when triply emphasized' do
+          md = 'the word ***emphasized*** is emphatic'
+          expected = "the word #{Rainbow("emphasized").bright.underline} is emphatic"
+          actual = markdown.render(md)
+          expect(actual).to eq(expected)
+        end
       end
 
       describe 'a list' do

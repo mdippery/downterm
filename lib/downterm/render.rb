@@ -38,6 +38,10 @@ module Downterm
         Rainbow(text).bright.to_s
       end
 
+      def triple_emphasis(text)
+        Rainbow(text).bright.underline.to_s
+      end
+
       def link(link, link_title, content)
         "#{Rainbow(content).underline} <#{link}>"
       end
