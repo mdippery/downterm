@@ -54,6 +54,10 @@ module Downterm
         quote.split("\n").map { |line| "> #{line}" }.join("\n") + "\n"
       end
 
+      def block_html(raw_html)
+        raw_html
+      end
+
       def strikethrough(text)
         Rainbow(text).hide.to_s
       end

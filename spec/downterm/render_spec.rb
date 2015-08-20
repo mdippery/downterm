@@ -181,6 +181,15 @@ QUOTE
           expect(actual).to eq(expected)
         end
       end
+
+      describe 'HTML' do
+        it 'is rendered verbatim' do
+          md = '<div><p><strong>This is HTML!</strong></p></div>'
+          expected = md + "\n"
+          actual = markdown.render(md)
+          expect(actual).to eq(expected)
+        end
+      end
     end
   end
 end
