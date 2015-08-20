@@ -14,10 +14,10 @@ module Downterm
 
       def entity(text)
         case text
-        when "&gt;"  then ">"
-        when "&lt;"  then "<"
-        when "&amp;" then "&"
-        else              text
+        when "&gt;"  then return ">"
+        when "&lt;"  then return "<"
+        when "&amp;" then return "&"
+        else              return text
         end
       end
 
@@ -51,6 +51,26 @@ module Downterm
 
       def strikethrough(text)
         Rainbow(text).hide.to_s
+      end
+
+      def list(contents, list_type)
+        case list_type
+        when :unordered then return contents
+        when :ordered   then return number_list(contents.split("\n")).join("\n") + "\n"
+        end
+      end
+
+      def list_item(text, list_type)
+        case list_type
+        when :unordered then return "* #{text}"
+        when :ordered   then return "#{text}"
+        end
+      end
+
+      private
+
+      def number_list(items)
+        (1..items.count).zip(items).map { |e| "#{e[0]}. #{e[1]}" }
       end
     end
   end
