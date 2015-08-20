@@ -183,9 +183,16 @@ QUOTE
       end
 
       describe 'HTML' do
-        it 'is rendered verbatim' do
+        it 'is rendered verbatim when in a block' do
           md = '<div><p><strong>This is HTML!</strong></p></div>'
           expected = md + "\n"
+          actual = markdown.render(md)
+          expect(actual).to eq(expected)
+        end
+
+        it 'is rendered verbatim when inline' do
+          md = '<strong>This is HTML!</strong>'
+          expected = md
           actual = markdown.render(md)
           expect(actual).to eq(expected)
         end

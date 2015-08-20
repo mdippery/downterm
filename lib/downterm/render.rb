@@ -66,6 +66,10 @@ module Downterm
         raw_html
       end
 
+      def raw_html(raw_html)
+        raw_html
+      end
+
       def strikethrough(text)
         Rainbow(text).hide.to_s
       end
