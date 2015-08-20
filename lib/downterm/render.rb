@@ -6,7 +6,7 @@ module Downterm
   module Render
     class Terminal < Redcarpet::Render::Base
       def paragraph(text)
-        text
+        "#{text}\n\n"
       end
 
       def normal_text(text)
@@ -18,7 +18,7 @@ module Downterm
       end
 
       def header(text, header_level)
-        "#{'#' * header_level} #{text}"
+        "#{'#' * header_level} #{text}\n\n"
       end
 
       def entity(text)
@@ -101,7 +101,11 @@ module Downterm
       end
 
       def hrule
-        '-' * HighLine::SystemExtensions.terminal_size[0]
+        '-' * HighLine::SystemExtensions.terminal_size[0] + "\n\n"
+      end
+
+      def postprocess(full_document)
+        full_document.rstrip
       end
 
       private

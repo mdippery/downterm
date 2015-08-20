@@ -239,7 +239,7 @@ module Downterm
             '',
             "And now we're back to plaintext.",
           ].join("\n")
-          expected = md + "\n"
+          expected = md
           actual = markdown.render(md)
           expect(actual).to eq(expected)
         end
