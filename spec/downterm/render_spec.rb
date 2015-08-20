@@ -56,52 +56,60 @@ module Downterm
 
       describe 'a list' do
         it 'is rendered verbatim when ordered' do
-          md = <<MD
-1. Item 1
-2. Item 2
-MD
+          md = [
+            'This is a list:',
+            '',
+            '1. Item 1',
+            '2. Item 2',
+          ].join("\n")
           expected = md
           actual = markdown.render(md)
           expect(actual).to eq(expected)
         end
 
         it 'is rendered verbatim when unordered' do
-          md = <<MD
-* Item 1
-* Item 2
-MD
+          md = [
+            'This is a list:',
+            '',
+            '* Item 1',
+            '* Item 2',
+          ].join("\n")
           expected = md
           actual = markdown.render(md)
           expect(actual).to eq(expected)
         end
 
         it 'is right-aligned' do
-          md = <<MD
-1. Item 1
-2. Item 2
-3. Item 3
-4. Item 4
-5. Item 5
-6. Item 6
-7. Item 7
-8. Item 8
-9. Item 9
-10. Item 10
-11. Item 11
-MD
-          expected = <<EXP
- 1. Item 1
- 2. Item 2
- 3. Item 3
- 4. Item 4
- 5. Item 5
- 6. Item 6
- 7. Item 7
- 8. Item 8
- 9. Item 9
-10. Item 10
-11. Item 11
-EXP
+          md = [
+            'This is a list:',
+            '',
+            '1. Item 1',
+            '2. Item 2',
+            '3. Item 3',
+            '4. Item 4',
+            '5. Item 5',
+            '6. Item 6',
+            '7. Item 7',
+            '8. Item 8',
+            '9. Item 9',
+            '10. Item 10',
+            '11. Item 11',
+          ].join("\n")
+          expected = [
+            'This is a list:',
+            '',
+            ' 1. Item 1',
+            ' 2. Item 2',
+            ' 3. Item 3',
+            ' 4. Item 4',
+            ' 5. Item 5',
+            ' 6. Item 6',
+            ' 7. Item 7',
+            ' 8. Item 8',
+            ' 9. Item 9',
+            '10. Item 10',
+            '11. Item 11',
+          ].join("\n")
           actual = markdown.render(md)
           expect(actual).to eq(expected)
         end
@@ -116,10 +124,12 @@ EXP
         end
 
         it 'is rendered verbatim when in a block' do
-          md = <<CODE
-    import antigravity
-    puts "I'm using Python!"
-CODE
+          md = [
+            %q(This is some code:),
+            %q(),
+            %q(    import antigravity),
+            %q(    puts "I'm using Python!"),
+          ].join("\n")
           expected = md
           actual = markdown.render(md)
           expect(actual).to eq(expected)
@@ -128,8 +138,20 @@ CODE
 
       describe 'a horizontal rule' do
         it 'is rendered as a series of dashes across the terminal' do
-          md = '---'
-          expected = '-' * HighLine::SystemExtensions.terminal_size[0] + "\n"
+          md = [
+            'This is some text',
+            '',
+            '---',
+            '',
+            'This is some more text',
+          ].join("\n")
+          expected = [
+            'This is some text',
+            '',
+            '-' * HighLine::SystemExtensions.terminal_size[0],
+            '',
+            'This is some more text',
+          ].join("\n")
           actual = markdown.render(md)
           expect(actual).to eq(expected)
         end
@@ -137,12 +159,14 @@ CODE
 
       describe 'a quote' do
         it 'is rendered verbatim' do
-          md = <<QUOTE
-> One, two! One, two! And through and through
-> The vorpal blade went snicker-snack!
-> He left it dead, and with its head
-> He went galumphing back
-QUOTE
+          md = [
+            'This is a cool quote:',
+            '',
+            '> One, two! One, two! And through and through',
+            '> The vorpal blade went snicker-snack!',
+            '> He left it dead, and with its head',
+            '> He went galumphing back',
+          ].join("\n")
           expected = md
           actual = markdown.render(md)
           expect(actual).to eq(expected)
@@ -208,7 +232,13 @@ QUOTE
 
       describe 'HTML' do
         it 'is rendered verbatim when in a block' do
-          md = '<div><p><strong>This is HTML!</strong></p></div>'
+          md = [
+            'This is some HTML:',
+            '',
+            '<div><p><strong>This is HTML!</strong></p></div>',
+            '',
+            "And now we're back to plaintext.",
+          ].join("\n")
           expected = md + "\n"
           actual = markdown.render(md)
           expect(actual).to eq(expected)
@@ -224,8 +254,14 @@ QUOTE
 
       describe 'a header' do
         it 'is rendered verbatim' do
-          md = '## Header 2'
-          expected = md + "\n"
+          md = [
+            "Here's some text",
+            '',
+            '## Header 2',
+            '',
+            'And now a new section',
+          ].join("\n")
+          expected = md
           actual = markdown.render(md)
           expect(actual).to eq(expected)
         end
@@ -233,8 +269,14 @@ QUOTE
 
       describe 'a linebreak' do
         it 'is rendered as a new line' do
-          md = "Line 1  \nLine 2"
-          expected = "Line 1\nLine 2"
+          md = [
+            'Line 1  ',
+            'Line 2',
+          ].join("\n")
+          expected = [
+            'Line 1',
+            'Line 2',
+          ].join("\n")
           actual = markdown.render(md)
           expect(actual).to eq(expected)
         end
