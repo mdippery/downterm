@@ -113,6 +113,54 @@ module Downterm
           actual = markdown.render(md)
           expect(actual).to eq(expected)
         end
+
+        it 'is rendered verbatim even when nested and ordered' do
+          md = [
+            'This is a list:',
+            '',
+            '1. Item 1',
+            '    1. Item 1a',
+            '    2. Item 1b',
+            '2. Item 2',
+            '    1. Item 2a',
+            '    2. Item 2b',
+          ].join("\n")
+          expected = md
+          actual = markdown.render(md)
+          expect(actual).to eq(expected)
+        end
+
+        it 'is rendered verbatim even when nested and unordered' do
+          md = [
+            'This is a list:',
+            '',
+            '* Item 1',
+            '    * Item 1a',
+            '    * Item 1b',
+            '* Item 2',
+            '    * Item 2a',
+            '    * Item 2b',
+          ].join("\n")
+          expected = md
+          actual = markdown.render(md)
+          expect(actual).to eq(expected)
+        end
+
+        it 'is rendered verbatim even when nested and of mixed type' do
+          md = [
+            'This is a list:',
+            '',
+            '1. Item 1',
+            '    * Item 1a',
+            '    * Item 1b',
+            '2. Item 2',
+            '    * Item 2a',
+            '    * Item 2b',
+          ].join("\n")
+          expected = md
+          actual = markdown.render(md)
+          expect(actual).to eq(expected)
+        end
       end
 
       describe 'code' do
