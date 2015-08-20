@@ -13,6 +13,10 @@ module Downterm
         text
       end
 
+      def header(text, header_level)
+        "#{'#' * header_level} #{text}\n"
+      end
+
       def entity(text)
         case text
         when "&gt;"  then return ">"

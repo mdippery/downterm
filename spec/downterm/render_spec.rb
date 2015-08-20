@@ -190,6 +190,15 @@ QUOTE
           expect(actual).to eq(expected)
         end
       end
+
+      describe 'a header' do
+        it 'is rendered verbatim' do
+          md = '## Header 2'
+          expected = md + "\n"
+          actual = markdown.render(md)
+          expect(actual).to eq(expected)
+        end
+      end
     end
   end
 end
