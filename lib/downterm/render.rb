@@ -42,12 +42,16 @@ module Downterm
         Rainbow(link).underline.to_s
       end
 
+      def codespan(code)
+        "`#{code}`"
+      end
+
       def block_code(code, language)
         code.split("\n").map { |line| "    #{line}\n"}.join("")
       end
 
-      def codespan(code)
-        "`#{code}`"
+      def block_quote(quote)
+        quote.split("\n").map { |line| "> #{line}" }.join("\n") + "\n"
       end
 
       def strikethrough(text)

@@ -84,14 +84,14 @@ EXP
       end
 
       describe 'code' do
-        it 'is indented by four spaces when in a block' do
+        it 'is rendered verbatim when inline' do
           md = '`import antigravity`'
           expected = md
           actual = markdown.render(md)
           expect(actual).to eq(expected)
         end
 
-        it 'is rendered verbatim when inline' do
+        it 'is rendered verbatim when in a block' do
           md = <<CODE
     import antigravity
     puts "I'm using Python!"
