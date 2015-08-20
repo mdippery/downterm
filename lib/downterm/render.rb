@@ -13,6 +13,10 @@ module Downterm
         text
       end
 
+      def linebreak
+        "\n"
+      end
+
       def header(text, header_level)
         "#{'#' * header_level} #{text}\n"
       end

@@ -199,6 +199,15 @@ QUOTE
           expect(actual).to eq(expected)
         end
       end
+
+      describe 'a linebreak' do
+        it 'is rendered as a new line' do
+          md = "Line 1  \nLine 2"
+          expected = "Line 1\nLine 2"
+          actual = markdown.render(md)
+          expect(actual).to eq(expected)
+        end
+      end
     end
   end
 end
