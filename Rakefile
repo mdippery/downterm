@@ -3,7 +3,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'downterm/version'
 
 GEMSPEC = `git ls-files | grep gemspec`.chomp
-GEM     = "downterm-#{Reponaut::VERSION}.gem"
+GEM     = "downterm-#{Downterm::VERSION}.gem"
 
 desc "Build downterm.gem"
 task :build do
