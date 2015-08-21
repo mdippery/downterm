@@ -176,7 +176,7 @@ module Downterm
       describe 'strikethrough text' do
         it 'is rendered dimmer than surrounding text' do
           md = 'today is ~~beautiful~~ grey'
-          expected = "today is #{Rainbow('beautiful').hide} grey"
+          expected = "today is beautiful grey"
           actual = markdown.render(md)
           expect(actual).to eq(expected)
         end

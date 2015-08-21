@@ -75,7 +75,7 @@ module Downterm
       end
 
       def strikethrough(text)
-        Rainbow(text).hide.to_s
+        text
       end
 
       def superscript(text)
