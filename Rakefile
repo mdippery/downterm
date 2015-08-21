@@ -6,8 +6,13 @@ GEMSPEC = `git ls-files | grep gemspec`.chomp
 GEM     = "downterm-#{Downterm::VERSION}.gem"
 
 desc "Build downterm.gem"
-task :build do
+task :build => :perms do
   system "gem", "build", GEMSPEC
+end
+
+desc "Ensure correct permissions for downterm.gem"
+task :perms do
+  system "chmod", "-R", "a+rX", *`git ls-files`.chomp.split("\n")
 end
 
 desc "Install downterm.gem"
