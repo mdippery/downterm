@@ -228,6 +228,44 @@ module Downterm
           actual = markdown.render(md)
           expect(actual).to eq(expected)
         end
+
+        it 'is converted from &gt; to > even in block code' do
+          md = [
+            'This is some code.',
+            '',
+            '    &gt;&gt;&gt; code',
+            '',
+            'That was some code.',
+          ].join("\n")
+          expected = [
+            'This is some code.',
+            '',
+            '    >>> code',
+            '',
+            'That was some code.',
+          ].join("\n")
+          actual = markdown.render(md)
+          expect(actual).to eq(expected)
+        end
+
+        it 'is converted from &lt; to < even in block code' do
+          md = [
+            'This is some code.',
+            '',
+            '    &lt;&lt;&lt; code',
+            '',
+            'That was some code.',
+          ].join("\n")
+          expected = [
+            'This is some code.',
+            '',
+            '    <<< code',
+            '',
+            'That was some code.',
+          ].join("\n")
+          actual = markdown.render(md)
+          expect(actual).to eq(expected)
+        end
       end
 
       describe 'HTML' do
