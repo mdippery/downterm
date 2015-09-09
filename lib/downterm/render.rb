@@ -59,12 +59,13 @@ module Downterm
       end
 
       def block_code(code, language)
-        code.split("\n")
-            .map { |line| "    #{line}" }
-            .map { |line| line.gsub(/&gt;/, '>') }
-            .map { |line| line.gsub(/&lt;/, '<') }
-            .map { |line| line.gsub(/&amp;/, '&') }
-            .join("\n")
+        block = code.split("\n")
+                    .map { |line| "    #{line}" }
+                    .map { |line| line.gsub(/&gt;/, '>') }
+                    .map { |line| line.gsub(/&lt;/, '<') }
+                    .map { |line| line.gsub(/&amp;/, '&') }
+                    .join("\n")
+        "#{block}\n\n"
       end
 
       def block_quote(quote)

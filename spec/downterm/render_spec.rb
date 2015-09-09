@@ -129,6 +129,20 @@ module Downterm
             %q(),
             %q(    import antigravity),
             %q(    puts "I'm using Python!"),
+            %q(),
+            %q(That was some code.),
+          ].join("\n")
+          expected = md
+          actual = markdown.render(md)
+          expect(actual).to eq(expected)
+        end
+
+        it 'is rendered verbatim in a block that has no non-block text after it' do
+          md = [
+            %q(This is some code:),
+            %q(),
+            %q(    import antigravity),
+            %q(    puts "I'm using Python!"),
           ].join("\n")
           expected = md
           actual = markdown.render(md)
