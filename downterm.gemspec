@@ -11,7 +11,7 @@ Gem::Specification.new do |gem|
   gem.email         = ['michael@monkey-robot.com']
   gem.homepage      = 'https://github.com/mdippery/downterm'
   gem.description   = 'Converts Markdown into text suitable for output to a terminal'
-  gem.summary       = 'Converts Markdown into text suitable for output to a terminal'
+  gem.summary       = 'Displays blocks of Markdown text in a manner that is easy to read in the terminal.'
 
   gem.metadata      = {
     'build_date' => Time.now.strftime("%Y-%m-%d %H:%M:%S %Z"),
