@@ -13,6 +13,12 @@ Gem::Specification.new do |gem|
   gem.description   = 'Converts Markdown into text suitable for output to a terminal'
   gem.summary       = 'Converts Markdown into text suitable for output to a terminal'
 
+  gem.metadata      = {
+    'build_date' => Time.now.strftime("%Y-%m-%d %H:%M:%S %Z"),
+    'commit' => `git describe`.chomp,
+    'commit_hash' => `git rev-parse HEAD`.chomp,
+  }
+
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
