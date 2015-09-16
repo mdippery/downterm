@@ -18,7 +18,7 @@ module Downterm
       end
 
       def header(text, header_level)
-        "#{'#' * header_level} #{text}\n\n"
+        "#{Rainbow(text).bright}\n\n"
       end
 
       def entity(text)

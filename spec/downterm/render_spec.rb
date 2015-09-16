@@ -305,7 +305,7 @@ module Downterm
       end
 
       describe 'a header' do
-        it 'is rendered verbatim' do
+        it 'is rendered bold' do
           md = [
             "Here's some text",
             '',
@@ -313,7 +313,13 @@ module Downterm
             '',
             'And now a new section',
           ].join("\n")
-          expected = md
+          expected = [
+            "Here's some text",
+            '',
+            Rainbow('Header 2').bright,
+            '',
+            'And now a new section',
+          ].join("\n")
           actual = markdown.render(md)
           expect(actual).to eq(expected)
         end
