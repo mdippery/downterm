@@ -94,8 +94,8 @@ module Downterm
 
       def list(contents, list_type)
         case list_type
-        when :unordered then return contents
-        when :ordered   then return number_list(contents.split("\n")).join("\n")
+        when :unordered then return contents + "\n"
+        when :ordered   then return number_list(contents.split("\n")).join("\n") + "\n"
         end
       end
 

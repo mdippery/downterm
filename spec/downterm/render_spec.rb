@@ -113,6 +113,25 @@ module Downterm
           actual = markdown.render(md)
           expect(actual).to eq(expected)
         end
+
+        it 'is spaced properly when mixed with paragraphs' do
+          md = [
+            'These are some items in a list:',
+            '',
+            '* Item 1',
+            '* Item 2',
+            '* Item 3',
+            '',
+            'These are some more items in a list:',
+            '',
+            '* Item 1',
+            '* Item 2',
+            '* Item 3',
+          ].join("\n")
+          expected = md
+          actual = markdown.render(md)
+          expect(actual).to eq(expected)
+        end
       end
 
       describe 'code' do
