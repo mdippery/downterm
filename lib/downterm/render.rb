@@ -1,6 +1,6 @@
-require 'highline'
 require 'rainbow'
 require 'redcarpet'
+require 'ttycaca'
 
 module Downterm
   module Render
@@ -107,7 +107,7 @@ module Downterm
       end
 
       def hrule
-        '-' * HighLine.new.output_cols + "\n\n"
+        '-' * Ttycaca::Terminal.new.width + "\n\n"
       end
 
       def postprocess(full_document)

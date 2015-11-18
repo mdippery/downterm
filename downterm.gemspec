@@ -26,9 +26,9 @@ Gem::Specification.new do |gem|
 
   gem.required_ruby_version = '>= 1.9.3'
 
-  gem.add_runtime_dependency('highline', '~> 1.7')
   gem.add_runtime_dependency('rainbow', '~> 2.0')
   gem.add_runtime_dependency('redcarpet', '~> 3.3')
+  gem.add_runtime_dependency('ttycaca', '~> 1.0')
 
   gem.add_development_dependency('rspec', '~> 3.3')
 end

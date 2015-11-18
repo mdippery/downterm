@@ -181,7 +181,7 @@ module Downterm
           expected = [
             'This is some text',
             '',
-            '-' * HighLine.new.output_cols,
+            '-' * Ttycaca::Terminal.new.width,
             '',
             'This is some more text',
           ].join("\n")

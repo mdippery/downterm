@@ -1,4 +1,4 @@
-require 'highline'
+require 'downterm'
 require 'rainbow'
 require 'redcarpet'
-require 'downterm'
+require 'ttycaca'
