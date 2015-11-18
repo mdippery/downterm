@@ -181,7 +181,7 @@ module Downterm
           expected = [
             'This is some text',
             '',
-            '-' * HighLine::SystemExtensions.terminal_size[0],
+            '-' * HighLine.new.output_cols,
             '',
             'This is some more text',
           ].join("\n")

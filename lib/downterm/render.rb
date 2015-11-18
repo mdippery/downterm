@@ -107,7 +107,7 @@ module Downterm
       end
 
       def hrule
-        '-' * HighLine::SystemExtensions.terminal_size[0] + "\n\n"
+        '-' * HighLine.new.output_cols + "\n\n"
       end
 
       def postprocess(full_document)

@@ -26,7 +26,7 @@ Gem::Specification.new do |gem|
 
   gem.required_ruby_version = '>= 1.9.3'
 
-  gem.add_runtime_dependency('highline', '~> 1.7')
+  gem.add_runtime_dependency('highline', '~> 2.0.0.pre.develop')
   gem.add_runtime_dependency('rainbow', '~> 2.0')
   gem.add_runtime_dependency('redcarpet', '~> 3.3')
 
