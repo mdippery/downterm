@@ -69,7 +69,10 @@ module Downterm
       end
 
       def block_quote(quote)
-        quote.split("\n").map { |line| "> #{line}" }.join("\n")
+        trimmed_quote = %Q{"#{quote.rstrip}"}
+        trailing_whitespace = quote[quote.rstrip.length..-1]
+        q = trimmed_quote.split("\n").map { |line| "    #{line}" }.join("\n")
+        "#{q}#{trailing_whitespace}"
       end
 
       def block_html(raw_html)

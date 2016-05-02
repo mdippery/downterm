@@ -191,7 +191,7 @@ module Downterm
       end
 
       describe 'a quote' do
-        it 'is rendered verbatim' do
+        it 'is indented and placed within quotes' do
           md = [
             'This is a cool quote:',
             '',
@@ -199,8 +199,19 @@ module Downterm
             '> The vorpal blade went snicker-snack!',
             '> He left it dead, and with its head',
             '> He went galumphing back',
+            '',
+            'It is from Alice in Wonderland.',
           ].join("\n")
-          expected = md
+          expected = <<-EOS.strip
+This is a cool quote:
+
+    "One, two! One, two! And through and through
+    The vorpal blade went snicker-snack!
+    He left it dead, and with its head
+    He went galumphing back"
+
+It is from Alice in Wonderland.
+          EOS
           actual = markdown.render(md)
           expect(actual).to eq(expected)
         end
