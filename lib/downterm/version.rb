@@ -1,3 +1,3 @@
 module Downterm
-  VERSION = "0.1.5.dev"
+  VERSION = "0.1.5"
 end
