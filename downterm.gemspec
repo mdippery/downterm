@@ -30,6 +30,5 @@ Gem::Specification.new do |gem|
   gem.add_runtime_dependency('redcarpet', '~> 3.3')
   gem.add_runtime_dependency('ttycaca', '~> 1.0')
 
-  gem.add_development_dependency('rake', '~> 12.0')
   gem.add_development_dependency('rspec', '~> 3.3')
 end
