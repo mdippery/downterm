@@ -191,7 +191,7 @@ module Downterm
       end
 
       describe 'a quote' do
-        it 'is indented and placed within quotes' do
+        it 'is indented and preceded by a pipe character' do
           md = [
             'This is a cool quote:',
             '',
@@ -205,10 +205,10 @@ module Downterm
           expected = <<-EOS.strip
 This is a cool quote:
 
-    "One, two! One, two! And through and through
-    The vorpal blade went snicker-snack!
-    He left it dead, and with its head
-    He went galumphing back"
+    | One, two! One, two! And through and through
+    | The vorpal blade went snicker-snack!
+    | He left it dead, and with its head
+    | He went galumphing back
 
 It is from Alice in Wonderland.
           EOS
